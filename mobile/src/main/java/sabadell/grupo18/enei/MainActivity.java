@@ -2,6 +2,8 @@ package sabadell.grupo18.enei;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Adapter;
@@ -12,14 +14,19 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ListView lstOferta;
+    private RecyclerView lstOferta;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lstOferta= (ListView) findViewById(R.id.lstOferta);
+        lstOferta= (RecyclerView) findViewById(R.id.lstOferta);
 
-        ListAdapter adapter=new AdapterOferta(this);
+        manager=new LinearLayoutManager(this);
+        lstOferta.setLayoutManager(manager);
+
+        adapter=new AdapterOferta(this);
         lstOferta.setAdapter(adapter);
 
     }
