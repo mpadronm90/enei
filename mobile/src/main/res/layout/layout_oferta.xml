@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView2" />
+        android:id="@+id/imgImagen" />
 
     <LinearLayout
         android:orientation="vertical"
