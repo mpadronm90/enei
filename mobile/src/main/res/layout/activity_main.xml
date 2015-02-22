@@ -4,26 +4,7 @@
     android:orientation="vertical"
     >
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-
-    android:minHeight="?attr/actionBarSize"
-    android:background="?attr/colorPrimary" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/account_balance"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" >
-        <include layout="@layout/account_balance"/>
-
-    </android.support.v7.widget.Toolbar>
-
+<include layout="@layout/toolbar" />
 
     <FrameLayout
         android:layout_width="fill_parent"
