@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import sabadell.grupo18.enei.Utils.ImageUtils;
+
 /**
  * Created by pablo on 21/02/15.
  */
@@ -74,8 +76,9 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
 
     @Override
     public void onBindViewHolder(AdapterOferta.ViewHolder holder, int i) {
-
+        ImageUtils im = new ImageUtils(contexto);
         Drawable drawable=contexto.getResources().getDrawable(ofertas.get(i).imagen);
+        drawable = im.resize(drawable);
         holder.imagen.setImageDrawable(drawable);
         holder.titulo.setText(ofertas.get(i).titulo);
         holder.contenido.setText(ofertas.get(i).subtitulo);
