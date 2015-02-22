@@ -34,6 +34,7 @@ public class OAuthAccessTokenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         try {
             oAuth2Helper = new Autorizador();
         }catch (IOException e){
@@ -42,6 +43,7 @@ public class OAuthAccessTokenActivity extends Activity {
         webview = new WebView(this);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setVisibility(View.VISIBLE);
+        webview.getSettings().setDomStorageEnabled(true);
         setContentView(webview);
 
         String authorizationUrl = oAuth2Helper.getAuthorizationUrl();
@@ -137,6 +139,7 @@ public class OAuthAccessTokenActivity extends Activity {
         protected void onPreExecute() {
 
         }
+
 
         /**
          * When we're done and we've retrieved either a valid token or an error from the server,
