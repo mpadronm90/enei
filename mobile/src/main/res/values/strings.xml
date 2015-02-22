@@ -2,7 +2,7 @@
     <string name="app_name">Enei</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">API Sabadell</string>
     <string name="title_activity_toolbar">toolbar</string>
     <string name="title_activity_oferta_detalles">OfertaDetalles</string>
 </resources>
