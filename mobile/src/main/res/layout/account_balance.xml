@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="1500€"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -21,4 +22,15 @@
 
         android:layout_marginLeft="255dp"
         android:layout_marginStart="255dp" />
+
+    <ProgressBar
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
+
 </RelativeLayout>
