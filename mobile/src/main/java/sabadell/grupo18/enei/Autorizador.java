@@ -86,6 +86,10 @@ public class Autorizador {
         flow.createAndStoreCredential(tokenResponse, UserID);
     }
 
+    public String executeApiCall() throws IOException {
+        return HTTP_TRANSPORT.createRequestFactory(flow.loadCredential(UserID)).buildGetRequest(new GenericUrl("https://developers.bancsabadell.com/ResourcesServerBS/oauthservices/v1.0.0/cuentasvista")).execute().parseAsString();
+    }
+
 
 
 }
