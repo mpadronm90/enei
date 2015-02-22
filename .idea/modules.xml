@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/Enei.iml" filepath="$PROJECT_DIR$/Enei.iml" />
-=======
       <module fileurl="file://$PROJECT_DIR$/enei.iml" filepath="$PROJECT_DIR$/enei.iml" />
->>>>>>> 83ce9f701faa4c67972581dc79738f97c7dd2700
       <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
     </modules>
