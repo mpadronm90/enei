@@ -65,10 +65,10 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
     public AdapterOferta(Context contexto){
         this.contexto= contexto;
 
-        ofertas.add(new Oferta("oferta1","contenido1", R.drawable.corazon,0));
-        ofertas.add(new Oferta("oferta2","contenido2", R.drawable.ipod,1));
-        ofertas.add(new Oferta("oferta3","contenido3", R.drawable.monitor,0));
-        ofertas.add(new Oferta("oferta4","contenido4", R.drawable.ordenador,2));
+        ofertas.add(new Oferta("Corazón","20€", R.drawable.corazon,0));
+        ofertas.add(new Oferta("iPod Touch","199€", R.drawable.ipod,1));
+        ofertas.add(new Oferta("Monitor","200€", R.drawable.monitor,0));
+        ofertas.add(new Oferta("Portatil Acer","500€", R.drawable.ordenador,2));
     }
 
 
