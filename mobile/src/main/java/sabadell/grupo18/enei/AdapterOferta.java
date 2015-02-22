@@ -22,12 +22,14 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView imagen;
+        public ImageView imagen_estado;
         public TextView titulo;
         public TextView contenido;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imagen= (ImageView) itemView.findViewById(R.id.imgImagen);
+            imagen_estado = (ImageView) itemView.findViewById(R.id.green);
             titulo= (TextView) itemView.findViewById(R.id.txtTitulo);
             contenido= (TextView) itemView.findViewById(R.id.txtContenido);
         }
@@ -38,12 +40,14 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
         String titulo;
         String subtitulo;
         int imagen;
+        int estado;
 
 
-        public Oferta(String titulo, String subtitulo, int imagen) {
+        public Oferta(String titulo, String subtitulo, int imagen,int estado) {
             this.titulo = titulo;
             this.subtitulo = subtitulo;
             this.imagen = imagen;
+            this.estado = estado;
         }
     }
 
@@ -59,10 +63,10 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
 
 
 
-        ofertas.add(new Oferta("oferta1","contenido1", R.drawable.corazon));
-        ofertas.add(new Oferta("oferta2","contenido2", R.drawable.ipod));
-        ofertas.add(new Oferta("oferta3","contenido3", R.drawable.monitor));
-        ofertas.add(new Oferta("oferta4","contenido4", R.drawable.ordenador));
+        ofertas.add(new Oferta("oferta1","contenido1", R.drawable.corazon,0));
+        ofertas.add(new Oferta("oferta2","contenido2", R.drawable.ipod,0));
+        ofertas.add(new Oferta("oferta3","contenido3", R.drawable.monitor,0));
+        ofertas.add(new Oferta("oferta4","contenido4", R.drawable.ordenador,0));
     }
 
 
@@ -79,10 +83,11 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
         ImageUtils im = new ImageUtils(contexto);
         Drawable drawable=contexto.getResources().getDrawable(ofertas.get(i).imagen);
         drawable = im.resize(drawable);
+        Drawable img_estado = contexto.getResources().getDrawable(R.drawable.green_circle);
         holder.imagen.setImageDrawable(drawable);
         holder.titulo.setText(ofertas.get(i).titulo);
         holder.contenido.setText(ofertas.get(i).subtitulo);
-
+        holder.imagen_estado.setImageDrawable(img_estado);
     }
 
 
