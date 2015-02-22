@@ -14,7 +14,7 @@ import com.google.api.client.util.store.DataStore;
 import com.google.api.client.auth.oauth2.TokenResponse;
 import com.google.api.client.util.store.MemoryDataStoreFactory;
 
-import android.util.Log;
+//import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,12 +23,16 @@ import java.io.IOException;
 
 /**
  * Created by Oscar on 21/02/2015.
+ * IBHD
  */
 public class Autorizador {
     private final String CLIENT_ID = "CLI2898747608739vtnwzgvblfawpbbwqbxbagthynhncykfevaaudqk";
     private final String CLIENT_SECRET = "C4ligul4s";
 
     private final String UserID = "UserSabadell";
+
+    //Guarda los scopes
+    private Collection<String> scopes = new ArrayList<String>();
 
     /** Global instance of the HTTP transport. */
     private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -40,8 +44,10 @@ public class Autorizador {
 
     private AuthorizationCodeFlow flow;
 
-    public Autorizador(){
-        this.dataStore = new MemoryDataStoreFactory.getDefaultInstance();
+    public Autorizador() throws IOException{
+        String[] vector = {"read",""};
+        Collections.addAll(this.scopes, vector);
+        this.dataStore = MemoryDataStoreFactory.getDefaultInstance().getDataStore("0");
         this.flow = new AuthorizationCodeFlow.Builder( BearerToken.authorizationHeaderAccessMethod() ,
                 HTTP_TRANSPORT,
                 JSON_FACTORY,
@@ -50,7 +56,6 @@ public class Autorizador {
                 CLIENT_ID,
                 "https://developers.bancsabadell.com/AuthServerBS/oauth/authorize"
         ).setCredentialDataStore(this.dataStore).build();
-
     }
 /*
     public static void Autorizar{
@@ -69,18 +74,15 @@ public class Autorizador {
 
     public String getAuthorizationUrl() {
         //TODO control de scopes por variables
-        String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri("http://localhost").setScopes("read").build();
+        String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri("http://localhost").setScopes(this.scopes).build();
         return authorizationUrl;
     }
 
     public void retrieveAndStoreAccessToken(String authorizationCode) throws IOException {
-        String[] vector = {"read",""};
-        Collection<String> scopes = new ArrayList<String>();
-        Collections.addAll(scopes, vector);
         TokenResponse tokenResponse = flow.newTokenRequest(authorizationCode).setScopes(scopes).setRedirectUri("http://localhost").execute();
-        Log.i(Constants.TAG, "Found tokenResponse :");
-        Log.i(Constants.TAG, "Access Token : " + tokenResponse.getAccessToken());
-        Log.i(Constants.TAG, "Refresh Token : " + tokenResponse.getRefreshToken());
+        //Log.i(Constants.TAG, "Found tokenResponse :");
+       // Log.i(Constants.TAG, "Access Token : " + tokenResponse.getAccessToken());
+        //Log.i(Constants.TAG, "Refresh Token : " + tokenResponse.getRefreshToken());
         flow.createAndStoreCredential(tokenResponse, UserID);
     }
 
