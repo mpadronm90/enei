@@ -49,6 +49,10 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
             this.imagen = imagen;
             this.estado = estado;
         }
+
+        public int getEstado(){
+            return estado;
+        }
     }
 
 
@@ -61,12 +65,10 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
     public AdapterOferta(Context contexto){
         this.contexto= contexto;
 
-
-
         ofertas.add(new Oferta("oferta1","contenido1", R.drawable.corazon,0));
-        ofertas.add(new Oferta("oferta2","contenido2", R.drawable.ipod,0));
+        ofertas.add(new Oferta("oferta2","contenido2", R.drawable.ipod,1));
         ofertas.add(new Oferta("oferta3","contenido3", R.drawable.monitor,0));
-        ofertas.add(new Oferta("oferta4","contenido4", R.drawable.ordenador,0));
+        ofertas.add(new Oferta("oferta4","contenido4", R.drawable.ordenador,2));
     }
 
 
@@ -83,7 +85,18 @@ public class AdapterOferta extends RecyclerView.Adapter<AdapterOferta.ViewHolder
         ImageUtils im = new ImageUtils(contexto);
         Drawable drawable=contexto.getResources().getDrawable(ofertas.get(i).imagen);
         drawable = im.resize(drawable);
-        Drawable img_estado = contexto.getResources().getDrawable(R.drawable.green_circle);
+        Drawable img_estado;
+        switch(ofertas.get(i).getEstado()){
+            case 0 : img_estado = contexto.getResources().getDrawable(R.drawable.green_circle);
+            break;
+            case 1 : img_estado = contexto.getResources().getDrawable(R.drawable.yellow_circle);
+            break;
+            case 2 : img_estado = contexto.getResources().getDrawable(R.drawable.red_circle);
+            break;
+            default : img_estado = contexto.getResources().getDrawable(R.drawable.red_circle);
+            break;
+        }
+        img_estado = im.resize(img_estado);
         holder.imagen.setImageDrawable(drawable);
         holder.titulo.setText(ofertas.get(i).titulo);
         holder.contenido.setText(ofertas.get(i).subtitulo);
