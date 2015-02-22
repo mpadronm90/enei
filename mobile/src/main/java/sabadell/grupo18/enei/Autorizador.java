@@ -45,10 +45,11 @@ public class Autorizador {
     private AuthorizationCodeFlow flow;
 
     public Autorizador() throws IOException{
-        String[] vector = {"read",""};
+        String[] vector = {"read"};
         Collections.addAll(this.scopes, vector);
         this.dataStore = MemoryDataStoreFactory.getDefaultInstance().getDataStore("0");
-        this.flow = new AuthorizationCodeFlow.Builder( BearerToken.authorizationHeaderAccessMethod() ,
+        this.flow = new AuthorizationCodeFlow.Builder(
+                BearerToken.authorizationHeaderAccessMethod(),
                 HTTP_TRANSPORT,
                 JSON_FACTORY,
                 new GenericUrl("https://developers.bancsabadell.com/AuthServerBS/oauth/token"),
